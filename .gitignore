@@ -1,0 +1,46 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+/google-services.json
+
+
+# Directorios de compilación
+/build/
+/.idea/
+/.gradle/
+/local.properties
+/captures/
+/outputs/
+/intermediates/
+
+# Archivos específicos de Android Studio
+/.DS_Store
+/.cxx/
+/.externalNativeBuild/
+/.gradle/
+/*.iml
+
+# Archivos de dependencias y logs
+/logs/
+/*.log
+/*.lock
+
+# Firebase
+/google-services.json
+
+# Archivos de NDK
+/obj/
+/libs/
+/jniLibs/

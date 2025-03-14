@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "511723089865",
+    "project_id": "aym-senati",
+    "storage_bucket": "aym-senati.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:511723089865:android:85ecf145fd6b11a6840218",
+        "android_client_info": {
+          "package_name": "com.barcozeg.proyecto_prueba"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIKF676AW0IwEzV2fn1ZwhLw7GrtR1P4Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

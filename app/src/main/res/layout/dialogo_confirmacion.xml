@@ -1,0 +1,47 @@
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:radius="20dp"
+    app:cardElevation="8dp"
+    app:cardBackgroundColor="@android:color/transparent"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_aviso"
+        android:gravity="center"
+        android:padding="20dp">
+
+        <!-- Título del Aviso -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aviso de Aplicativo"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:paddingBottom="5dp"/>
+
+        <!-- Mensaje -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cliente Agregado Correctamente"
+            android:textSize="16sp"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:paddingBottom="15dp"/>
+
+        <!-- Imagen de Confirmación -->
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/realizado"
+            android:layout_marginBottom="10dp"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

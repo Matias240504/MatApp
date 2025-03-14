@@ -1,0 +1,93 @@
+<resources>
+    <!--Credendiales del aplicativo-->
+    <string name="app_name">MatApp</string>
+    <string name="developer">Matias Barco</string>
+    <string name="desarrollo">Desarrollado por:</string>
+    <string name="version">Version 1.0.0</string>
+
+    <string name="descripcion_dev">
+    Soy un programador con las siguientes habilidades y cualidades:
+    Poseo habilidades comunicativas.
+    Habilidad para trabajar en equipo y evitar conflictos.
+    Soy lógico y analítico.
+    Creativo y ocurrente.
+    Ser organizado y poder planificar tareas y utilizar eficientemente mi tiempo.
+    Poseo la capacidad de planear, diseñar, evaluar, controlar, instalar, integrar,
+            construir, operar, administrar, y mantener sistemas que contemplen los sistemas
+            de software y todo lo relacionado con el ambiente computacional,
+            buscando el óptimo aprovechamiento.
+    </string>
+    <string name="telefono_dev">Telefono: 938801663</string>
+    <string name="volver">Volver</string>
+
+    <!--Login-->
+    <string name="Titulo_login">Ingrese Sesion</string>
+    <string name="lbl_usuario">Correo:</string>
+    <string name="txt_usuario">Ingrese correo:</string>
+    <string name="lbl_password">Contraseña:</string>
+    <string name="txt_password">Ingrese contraseña:</string>
+    <string name="btn_ingresar">INGRESAR</string>
+    <string name="lbl_crear_cuenta">No tienes cuenta?, REGISTRATE</string>
+
+    <!--Regsitro-->
+    <string name="titulo_registro">Registrar Usuario</string>
+    <string name="lbl_nombres">Nombre:</string>
+    <string name="txt_nombres">Ingrese Nombre</string>
+    <string name="lbl_apellidos">Apellido:</string>
+    <string name="txt_apellidos">Ingrese apellidos</string>
+    <string name="lbl_correo">Correo:</string>
+    <string name="txt_correo">Ingrese correo</string>
+    <string name="lbl_pass">Contraseña:</string>
+    <string name="txt_pass">Ingrese contraseña</string>
+    <string name="lbl_confirmar_password">Confirmar Contraseña:</string>
+    <string name="txt_confirmar_password">Ingrese confirmacion de contraseña</string>
+    <string name="btn_registrar">Registrar Usuario</string>
+    <string name="lbl_ir_login">Volver a Ingreso</string>
+
+    <!--Dashboard-->
+    <string name="Bienvenido">Bienvenido</string>
+    <string name="empresa">Empresa</string>
+    <string name="gastos">Gastos</string>
+    <string name="lista_tareas">Lista Tareas</string>
+    <string name="tareas">Tareas</string>
+    <string name="favoritos">Favoritos</string>
+    <string name="mis_Datos">Mis datos</string>
+    <string name="cerrar_sesion">Cerrar Sesion</string>
+
+    <!--mis datos-->
+    <string name="correo_md">Correo Usuario:</string>
+    <string name="codigo_md">Codigo Usuario:</string>
+    <string name="titulo_md">Mis Datos</string>
+    <string name="datos_md">Datos</string>
+    <string name="leyenda_md">Todos los campos son requeridos: Nombre, Apellidos, Teléfono</string>
+    <string name="nombre_md">Nombres</string>
+    <string name="apellido_md">apellidos</string>
+    <string name="fecha_nacimiento">Fecha Nacimiento</string>
+    <string name="edad_md">Edad</string>
+    <string name="telefono_md">Telefono</string>
+    <string name="domicilio_md">Domicilio</string>
+    <string name="tiktok_md">Tiktok</string>
+    <string name="profesion_md">Profesión</string>
+    <string name="guardar_md">Guardar</string>
+
+
+    <!--ITEM CLIENTE-->
+    <string name="id_cliente_item">Id Cliente</string>
+    <string name="uid_cliente">Uid Cliente</string>
+    <string name="nombre_cliente_item">Nombre</string>
+    <string name="apellido_cliente_item">Apellidos</string>
+    <string name="correo_cliente_item">Telefono</string>
+    <string name="dni_cliente_item">Dni</string>
+    <string name="telefono_cliente_item">Telefono</string>
+    <string name="direccion_cliente_Item">Direccion</string>
+    <!--agregar cliente-->
+    <string name="registrar_cli">Registrar Cliente</string>
+    <string name="uid_usuario">Mi UID</string>
+    <string name="nombre_cli">Nombres Clientes</string>
+    <string name="apellidos_cli">Apellidos Clientes</string>
+    <string name="correo_cli">Correo</string>
+    <string name="dni_cli">DNI</string>
+    <string name="telefon_cli">Telefono</string>
+    <string name="direccion_cli">Direccion</string>
+
+</resources>
