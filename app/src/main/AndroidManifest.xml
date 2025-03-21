@@ -37,9 +37,6 @@
             android:name=".Favoritos.FavoritosActivity"
             android:exported="false" />
         <activity
-            android:name=".Empresa.EmpresaActivity"
-            android:exported="false" />
-        <activity
             android:name=".DashboardActivity"
             android:exported="true" />
         <activity

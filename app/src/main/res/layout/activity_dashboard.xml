@@ -90,12 +90,12 @@
                         <ImageView
                             android:layout_width="80dp"
                             android:layout_height="80dp"
-                            android:src="@drawable/clientes_bi" />
+                            android:src="@drawable/cliente" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/empresa"
+                            android:text="@string/Clientes"
                             android:textColor="@color/colorPrimaryDark"
                             android:textSize="16sp"
                             android:textStyle="bold" />
@@ -132,12 +132,12 @@
                         <ImageView
                             android:layout_width="80dp"
                             android:layout_height="80dp"
-                            android:src="@drawable/gastos" />
+                            android:src="@drawable/presupuesto" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/gastos"
+                            android:text= "@string/gastos"
                             android:textColor="@color/colorPrimaryDark"
                             android:textSize="16sp"
                             android:textStyle="bold" />
@@ -276,7 +276,7 @@
                         <ImageView
                             android:layout_width="80dp"
                             android:layout_height="80dp"
-                            android:src="@drawable/lista_tareas" />
+                            android:src="@drawable/favoritos" />
 
                         <TextView
                             android:layout_width="wrap_content"

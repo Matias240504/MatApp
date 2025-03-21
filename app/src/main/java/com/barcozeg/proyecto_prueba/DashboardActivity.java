@@ -18,7 +18,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.cardview.widget.CardView;
 
-import com.barcozeg.proyecto_prueba.Empresa.EmpresaActivity;
+import com.barcozeg.proyecto_prueba.Cliente.ListaClienteActivity;
 import com.barcozeg.proyecto_prueba.Favoritos.FavoritosActivity;
 import com.barcozeg.proyecto_prueba.Gastos.GastosActivity;
 import com.barcozeg.proyecto_prueba.ListaTareas.ListaTareasActivity;
@@ -69,7 +69,7 @@ public class DashboardActivity extends AppCompatActivity {
         textViewNombre.setText("Usuario Nombre: " + nombreUsuario);
 
         // Inicializar los CardViews
-        CardView cvEmpresa = findViewById(R.id.cvEmpresa);
+        CardView cvClientes = findViewById(R.id.cvEmpresa);
         CardView cvGastos = findViewById(R.id.cvGastos);
         CardView cvTareas = findViewById(R.id.cvTareas);
         CardView cvListaTareas = findViewById(R.id.cvListaTareas);
@@ -77,7 +77,12 @@ public class DashboardActivity extends AppCompatActivity {
         CardView cvMisDatos = findViewById(R.id.cvMisDatos);
 
         // Asignar OnClickListener a cada CardView
-        cvEmpresa.setOnClickListener(v -> startActivity(new Intent(this, EmpresaActivity.class)));
+        cvClientes.setOnClickListener(v -> {
+            Intent intent1 = new Intent(this, ListaClienteActivity.class);
+            intent1.putExtra("id_usuario", mAuth.getCurrentUser().getUid());
+            startActivity(intent1);
+        });
+
         cvGastos.setOnClickListener(v -> startActivity(new Intent(this, GastosActivity.class)));
         cvTareas.setOnClickListener(v -> startActivity(new Intent(this, TareasActivity.class)));
         cvListaTareas.setOnClickListener(v -> startActivity(new Intent(this, ListaTareasActivity.class)));
@@ -87,6 +92,7 @@ public class DashboardActivity extends AppCompatActivity {
         cvMisDatos.setOnClickListener(v -> {
             Intent misDatosIntent = new Intent(DashboardActivity.this, MisDatosActivity.class);
             misDatosIntent.putExtra("correo_usuario", correoUsuario);
+            misDatosIntent.putExtra("nombre_usuario", nombreUsuario);
             startActivity(misDatosIntent);
         });
 

@@ -46,7 +46,7 @@
 
     <!--Dashboard-->
     <string name="Bienvenido">Bienvenido</string>
-    <string name="empresa">Empresa</string>
+    <string name="Clientes">Clientes</string>
     <string name="gastos">Gastos</string>
     <string name="lista_tareas">Lista Tareas</string>
     <string name="tareas">Tareas</string>

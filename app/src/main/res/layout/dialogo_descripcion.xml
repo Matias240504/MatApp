@@ -89,7 +89,7 @@
                     android:id="@+id/btntelefonodev"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/lista_tareas"
+                    android:src="@drawable/telefono"
                     android:scaleType="centerCrop"/>
             </LinearLayout>
 
@@ -102,7 +102,7 @@
                     android:id="@+id/btnyoutubedev"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/lista_tareas"
+                    android:src="@drawable/youtube"
                     android:scaleType="centerCrop"/>
             </LinearLayout>
 

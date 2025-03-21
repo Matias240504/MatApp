@@ -29,13 +29,17 @@ public class ListaClienteActivity extends AppCompatActivity {
             return insets;
         });
 
+        String idUsuario = getIntent().getStringExtra("id_usuario");
+
         btnAgregarClient = findViewById(R.id.btnAgregarClient);
 
         btnAgregarClient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(ListaClienteActivity.this, "Hola Jovenes, Bienvenidos", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(ListaClienteActivity.this,AgregarClienteActivity.class));
+                Intent intent = new Intent(ListaClienteActivity.this, AgregarClienteActivity.class);
+                intent.putExtra("id_usuario", idUsuario);
+                startActivity(intent);
             }
         });
     }
