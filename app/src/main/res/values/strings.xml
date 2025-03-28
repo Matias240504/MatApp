@@ -76,7 +76,7 @@
     <string name="uid_cliente">Uid Cliente</string>
     <string name="nombre_cliente_item">Nombre</string>
     <string name="apellido_cliente_item">Apellidos</string>
-    <string name="correo_cliente_item">Telefono</string>
+    <string name="correo_cliente_item">Correo</string>
     <string name="dni_cliente_item">Dni</string>
     <string name="telefono_cliente_item">Telefono</string>
     <string name="direccion_cliente_Item">Direccion</string>

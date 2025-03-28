@@ -7,6 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
+    android:fitsSystemWindows="true"
     android:background="@drawable/fondo3"
     tools:context=".Cliente.AgregarClienteActivity">
 
@@ -29,6 +30,7 @@
 
         <TextView
             android:id="@+id/idUsuariocli"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/uid_usuario"

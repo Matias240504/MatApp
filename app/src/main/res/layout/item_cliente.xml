@@ -27,11 +27,13 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="5dp">
+
             <TextView
                 android:id="@+id/tvidclientei"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/id_cliente_item"
+                android:visibility="gone"
                 android:layout_marginTop="5dp"/>
 
             <TextView
@@ -39,12 +41,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/uid_cliente"
+                android:visibility="gone"
                 android:layout_marginTop="5dp"/>
 
             <TextView
                 android:id="@+id/tvnombrei"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:textStyle="bold"
                 android:text="@string/nombre_cliente_item"
                 android:layout_marginTop="5dp"/>
 
@@ -52,13 +57,17 @@
                 android:id="@+id/tvapellidoi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="11dp"
                 android:text="@string/apellido_cliente_item"
+                android:gravity="center_horizontal"
                 android:layout_marginTop="5dp"/>
+
             <TextView
                 android:id="@+id/tvcorreoclientei"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/correo_cliente_item"
+                android:visibility="gone"
                 android:layout_marginTop="5dp"/>
 
             <TextView
@@ -66,6 +75,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/dni_cliente_item"
+                android:visibility="gone"
                 android:layout_marginTop="5dp"/>
 
             <TextView
@@ -73,6 +83,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/telefono_cliente_item"
+                android:gravity="center_horizontal"
+                android:textStyle="bold"
                 android:layout_marginTop="5dp"/>
 
             <TextView
@@ -80,6 +92,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/direccion_cliente_Item"
+                android:visibility="gone"
                 android:layout_marginTop="5dp"/>
         </androidx.appcompat.widget.LinearLayoutCompat>
 

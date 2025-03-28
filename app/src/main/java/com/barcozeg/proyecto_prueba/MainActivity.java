@@ -128,7 +128,9 @@ public class    MainActivity extends AppCompatActivity {
                                         if (snapshot.exists()) {
                                             String nombre = snapshot.child("nombres").getValue(String.class);
 
-                                            if (nombre == null || nombre.isEmpty()) {
+                                            Log.d("DEBUG_FIREBASE", "Nombre obtenido: " + nombre);
+
+                                            if (nombre == null || nombre.trim().isEmpty()) {
                                                 nombre = "Usuario";
                                             }
 

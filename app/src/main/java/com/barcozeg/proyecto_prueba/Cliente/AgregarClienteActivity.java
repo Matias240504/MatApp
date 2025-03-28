@@ -1,7 +1,16 @@
 package com.barcozeg.proyecto_prueba.Cliente;
 
+import android.app.AlertDialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,10 +50,6 @@ public class AgregarClienteActivity extends AppCompatActivity {
             return;
         }
 
-        // Mostrar UID en la interfaz
-        TextView textViewID = findViewById(R.id.idUsuariocli);
-        textViewID.setText("Mi UID: " + uid_clienteCLI);
-
         // Inicializar Firebase Database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         usuariosClienteRef = database.getReference("Clientes"); // Guardamos en "Clientes"
@@ -59,7 +64,9 @@ public class AgregarClienteActivity extends AppCompatActivity {
         btnGuardarCLI = findViewById(R.id.btnguardarcliente);
 
         // Evento para guardar en Firebase
-        btnGuardarCLI.setOnClickListener(v -> registrarCliente());
+        btnGuardarCLI.setOnClickListener(v -> {
+                registrarCliente();
+        });
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -78,8 +85,8 @@ public class AgregarClienteActivity extends AppCompatActivity {
         String direccionCLI = etDireccionCLI.getText().toString();
 
         // Validaciones básicas
-        if (nombresCLI.isEmpty() || apellidosCLI.isEmpty() || correoCLI.isEmpty() || telefonoCLI.isEmpty() || dniCLI.isEmpty() || direccionCLI.isEmpty()) {
-            Toast.makeText(this, "Todos los campos son obligatorios", Toast.LENGTH_SHORT).show();
+        if (nombresCLI.isEmpty() || apellidosCLI.isEmpty() || telefonoCLI.isEmpty()) {
+            mostrarAviso();
             return;
         }
 
@@ -98,4 +105,27 @@ public class AgregarClienteActivity extends AppCompatActivity {
                 .addOnSuccessListener(aVoid -> Toast.makeText(AgregarClienteActivity.this, "Cliente registrado correctamente", Toast.LENGTH_SHORT).show())
                 .addOnFailureListener(e -> Toast.makeText(AgregarClienteActivity.this, "Error al registrar", Toast.LENGTH_SHORT).show());
     }
+
+    private void mostrarAviso() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.dialogo_advertencia, null);
+        builder.setView(dialogView);
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+        // Configurar el botón para cerrar el diálogo
+        Button btnEntendidoCliente = dialogView.findViewById(R.id.btnEntendidoCliente);
+        btnEntendidoCliente.setOnClickListener(v -> dialog.dismiss());
+
+        // Hacer que el diálogo aparezca centrado y sin tocar los bordes
+        Window window = dialog.getWindow();
+        if (window != null) {
+            window.setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); // Fondo transparente
+            window.setGravity(Gravity.CENTER); // Centrar en la pantalla
+        }
+    }
+
 }

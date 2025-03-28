@@ -75,7 +75,7 @@ public class MisDatosActivity extends AppCompatActivity {
         btnguardarMd.setOnClickListener(v -> {
             guardarDatos();
             actualizarDatos();
-            mostrarAviso();
+
         });
 
         // Evento para abrir el DatePicker al tocar el EditText
@@ -155,9 +155,9 @@ public class MisDatosActivity extends AppCompatActivity {
                     user.put("password", passwordActual);
 
                     // Guardar en Firebase
-                    mDatabase.child("usuarios").child(userId).setValue(user)
+                    mDatabase.child("usuarios").child(userId).updateChildren(user)
                             .addOnSuccessListener(aVoid -> {
-                                Toast.makeText(MisDatosActivity.this, "Datos guardados correctamente", Toast.LENGTH_SHORT).show();
+                                mostrarAviso();
                             })
                             .addOnFailureListener(e -> {
                                 Toast.makeText(MisDatosActivity.this, "Error al guardar datos", Toast.LENGTH_SHORT).show();
@@ -216,6 +216,10 @@ public class MisDatosActivity extends AppCompatActivity {
     }
 
     private void lecturaDatos() {
+        if (mAuth.getCurrentUser() == null){
+            Toast.makeText(MisDatosActivity.this, "Usuario no autenticado", Toast.LENGTH_SHORT).show();
+        }
+
         String userId = mAuth.getCurrentUser().getUid();
         mDatabase.child("usuarios").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -239,39 +243,61 @@ public class MisDatosActivity extends AppCompatActivity {
         });
     }
 
-    private void actualizarDatos(){
-        String nombre_act = etnombresMd.getText().toString().trim();
-        String apellido_act = etapellidosMD.getText().toString().trim();
-        String fechanaciemiento_act = etfechaNacimientoMd.getText().toString().trim();
-        String edad_act = etedadMd.getText().toString().trim();
-        String telefono_act = ettelefonoMd.getText().toString().trim();
-        String domicilio_act = etdomicilioMd.getText().toString().trim();
-        String profesion_act = etprofesionMd.getText().toString().trim();
-        String tiktok_act = ettiktokMd.getText().toString().trim();
-
-        HashMap<String, Object> datos_actualizar = new HashMap<>();
-        datos_actualizar.put("nombres", nombre_act);
-        datos_actualizar.put("apellidos", apellido_act);
-        datos_actualizar.put("fecha_nacimiento", fechanaciemiento_act);
-        datos_actualizar.put("edad", edad_act);
-        datos_actualizar.put("telefono", telefono_act);
-        datos_actualizar.put("domicilio", domicilio_act);
-        datos_actualizar.put("profesion", profesion_act);
-        datos_actualizar.put("tiktok", tiktok_act);
-
+    private void actualizarDatos() {
         String userId = mAuth.getCurrentUser().getUid();
-        mDatabase.child("usuarios").child(userId).updateChildren(datos_actualizar)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
 
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(MisDatosActivity.this,"Esperando datos ..."+e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+        // Obtener los datos actuales de Firebase
+        mDatabase.child("usuarios").child(userId).get().addOnCompleteListener(task -> {
+            if (task.isSuccessful() && task.getResult().exists()) {
+                DataSnapshot snapshot = task.getResult();
+
+                String nombre_actual = snapshot.child("nombres").getValue(String.class);
+                String apellido_actual = snapshot.child("apellidos").getValue(String.class);
+                String fechanacimiento_actual = snapshot.child("fecha_nacimiento").getValue(String.class);
+                String edad_actual = snapshot.child("edad").getValue(String.class);
+                String telefono_actual = snapshot.child("telefono").getValue(String.class);
+                String domicilio_actual = snapshot.child("domicilio").getValue(String.class);
+                String profesion_actual = snapshot.child("profesion").getValue(String.class);
+                String tiktok_actual = snapshot.child("tiktok").getValue(String.class);
+
+                String nombre_act = etnombresMd.getText().toString().trim();
+                String apellido_act = etapellidosMD.getText().toString().trim();
+                String fechanaciemiento_act = etfechaNacimientoMd.getText().toString().trim();
+                String edad_act = etedadMd.getText().toString().trim();
+                String telefono_act = ettelefonoMd.getText().toString().trim();
+                String domicilio_act = etdomicilioMd.getText().toString().trim();
+                String profesion_act = etprofesionMd.getText().toString().trim();
+                String tiktok_act = ettiktokMd.getText().toString().trim();
+
+                HashMap<String, Object> datos_actualizar = new HashMap<>();
+
+                // Agregar solo los campos que han cambiado
+                if (!nombre_act.isEmpty() && !nombre_act.equals(nombre_actual)) datos_actualizar.put("nombres", nombre_act);
+                if (!apellido_act.isEmpty() && !apellido_act.equals(apellido_actual)) datos_actualizar.put("apellidos", apellido_act);
+                if (!fechanaciemiento_act.isEmpty() && !fechanaciemiento_act.equals(fechanacimiento_actual)) datos_actualizar.put("fecha_nacimiento", fechanaciemiento_act);
+                if (!edad_act.isEmpty() && !edad_act.equals(edad_actual)) datos_actualizar.put("edad", edad_act);
+                if (!telefono_act.isEmpty() && !telefono_act.equals(telefono_actual)) datos_actualizar.put("telefono", telefono_act);
+                if (!domicilio_act.isEmpty() && !domicilio_act.equals(domicilio_actual)) datos_actualizar.put("domicilio", domicilio_act);
+                if (!profesion_act.isEmpty() && !profesion_act.equals(profesion_actual)) datos_actualizar.put("profesion", profesion_act);
+                if (!tiktok_act.isEmpty() && !tiktok_act.equals(tiktok_actual)) datos_actualizar.put("tiktok", tiktok_act);
+
+                // Verificar si hay datos para actualizar
+                if (datos_actualizar.isEmpty()) {
+                    Toast.makeText(MisDatosActivity.this, "No se actualizaron los datos. No hubo cambios.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Actualizar en Firebase
+                mDatabase.child("usuarios").child(userId).updateChildren(datos_actualizar)
+                        .addOnSuccessListener(unused ->
+                                Toast.makeText(MisDatosActivity.this, "Datos actualizados correctamente", Toast.LENGTH_SHORT).show())
+                        .addOnFailureListener(e ->
+                                Toast.makeText(MisDatosActivity.this, "Error al actualizar: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+
+            } else {
+                Toast.makeText(MisDatosActivity.this, "No se encontraron datos actuales", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void mostrarAviso() {

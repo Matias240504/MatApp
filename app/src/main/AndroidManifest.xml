@@ -17,15 +17,18 @@
         tools:targetApi="31">
         <activity
             android:name=".Cliente.AgregarClienteActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
             android:name=".Cliente.ListaClienteActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
             android:name=".Tareas.TareasActivity"
             android:exported="false" />
         <activity
             android:name=".MisDatos.MisDatosActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
             android:name=".ListaTareas.ListaTareasActivity"
@@ -41,6 +44,7 @@
             android:exported="true" />
         <activity
             android:name=".RegistroActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="true" />
         <activity
             android:name=".PrecargaActivity"
