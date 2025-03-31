@@ -1,13 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:radius="20dp"
+    android:background="@android:color/transparent"
     app:cardElevation="8dp"
-    app:cardBackgroundColor="@android:color/transparent"
-    android:padding="20dp">
+    app:cardCornerRadius="20dp"
+    app:cardPreventCornerOverlap="false">
 
+    <!-- LinearLayout con fondo personalizado -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Aviso de Aplicativo"
-            android:textSize="18sp"
+            android:textSize="25sp"
             android:textStyle="bold"
             android:textColor="@android:color/white"
             android:gravity="center"
@@ -29,10 +31,9 @@
 
         <!-- Mensaje -->
         <TextView
-            android:id="@+id/textoConfirmacion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cliente Agregado Correctamente"
+            android:text="Seleccione una opción:"
             android:textSize="16sp"
             android:textColor="@android:color/white"
             android:gravity="center"
@@ -44,5 +45,31 @@
             android:layout_height="80dp"
             android:src="@drawable/realizado"
             android:layout_marginBottom="10dp"/>
+
+        <!-- Contenedor de Botones -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="10dp">
+
+            <!-- Botón Editar -->
+            <ImageView
+                android:id="@+id/btnEditarCliente"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/editar"
+                android:layout_marginEnd="20dp"
+                android:contentDescription="Editar Cliente"/>
+
+            <!-- Botón Eliminar -->
+            <ImageView
+                android:id="@+id/btnEliminarCliente"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/eliminar"
+                android:contentDescription="Eliminar Cliente"/>
+        </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

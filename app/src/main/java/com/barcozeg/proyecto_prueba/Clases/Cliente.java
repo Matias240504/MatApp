@@ -1,6 +1,8 @@
 package com.barcozeg.proyecto_prueba.Clases;
 
-public class Cliente {
+import java.io.Serializable;
+
+public class Cliente implements Serializable {
     String id_cliente;
     String uid_cliente;
     String nombres;

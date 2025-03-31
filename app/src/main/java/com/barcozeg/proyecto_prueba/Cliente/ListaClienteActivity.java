@@ -1,10 +1,16 @@
 package com.barcozeg.proyecto_prueba.Cliente;
 
+import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -106,7 +112,8 @@ public class ListaClienteActivity extends AppCompatActivity {
 
                     @Override
                     public void onItemLongClick(View view, int position) {
-                        Toast.makeText(ListaClienteActivity.this, "Click Extendido", Toast.LENGTH_SHORT).show();
+                        Cliente clienteSeleccionado = getItem(position);
+                        mostrarDialogoOpciones(clienteSeleccionado);
                     }
                 });
                 return viewHolderCliente;
@@ -116,6 +123,58 @@ public class ListaClienteActivity extends AppCompatActivity {
         recyclerViewClientes.setLayoutManager(new GridLayoutManager(ListaClienteActivity.this,2));
         firebaseRecyclerAdapter.startListening();
         recyclerViewClientes.setAdapter(firebaseRecyclerAdapter);
+    }
+
+    private void mostrarDialogoOpciones(Cliente cliente) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.dialogo_clientes, null);
+        builder.setView(dialogView);
+
+        ImageView btnEditar = dialogView.findViewById(R.id.btnEditarCliente);
+        ImageView btnEliminar = dialogView.findViewById(R.id.btnEliminarCliente);
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+        // Hacer que el diálogo aparezca centrado y sin tocar los bordes
+        Window window = dialog.getWindow();
+        if (window != null) {
+            window.setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); // Fondo transparente
+            window.setGravity(Gravity.CENTER); // Centrar en la pantalla
+        }
+
+        // Acción para EDITAR (Versión mejorada)
+        btnEditar.setOnClickListener(v -> {
+            Intent intent = new Intent(ListaClienteActivity.this, AgregarClienteActivity.class);
+
+            // Opción 1 (Recomendada): Pasar el objeto Cliente completo
+            intent.putExtra("cliente", cliente); // Asegúrate que Cliente implementa Serializable
+
+            // Opción 2: Si prefieres pasar solo el ID y luego cargar los datos desde DB
+            // intent.putExtra("cliente_id", cliente.getId_cliente());
+
+            startActivity(intent);
+            dialog.dismiss();
+        });
+
+        // Acción para ELIMINAR (se mantiene igual)
+        btnEliminar.setOnClickListener(v -> {
+            eliminarCliente(cliente);
+            dialog.dismiss();
+        });
+    }
+
+    private void eliminarCliente(Cliente cliente) {
+        DatabaseReference clienteRef = BD_usuarios.child(firebaseUser.getUid()).child("clientes").child(cliente.getId_cliente());
+
+        clienteRef.removeValue().addOnSuccessListener(aVoid -> {
+            Toast.makeText(ListaClienteActivity.this, "Cliente eliminado", Toast.LENGTH_SHORT).show();
+            firebaseRecyclerAdapter.notifyDataSetChanged(); // Refresca la lista
+        }).addOnFailureListener(e -> {
+            Toast.makeText(ListaClienteActivity.this, "Error al eliminar", Toast.LENGTH_SHORT).show();
+        });
     }
 
     @Override
